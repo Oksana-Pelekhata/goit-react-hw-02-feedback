@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../theme'
 import { FeedbackOptions } from './FeedbackOptions'
-import { Title, Section } from './FeedbackOptions/styled'
+import { Section } from './Section'
 import { Statistics } from "./Statistics";
 import { Notification } from "./Notification";
 
@@ -38,14 +38,11 @@ return positiveFeedbackPercentage
      const { good, neutral, bad } = this.state;
       return (
     <ThemeProvider theme = {theme}>
-  <Section>
-      <Title>Please leave feedback</Title>
-
+  <Section title="Please leave feedback">
           <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.handleFeedbackBtn} />.
           </Section>
           {this.countTotalFeedback() === 0 ? <Notification message="There is no feedback" /> :
-            <Section>
-              <Title>Statistics</Title>
+            <Section title="Statistics">
               <Statistics good={good} neutral={neutral}
                 bad={bad}
                 total={this.countTotalFeedback()}
